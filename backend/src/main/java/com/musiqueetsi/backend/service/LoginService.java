@@ -62,7 +62,7 @@ public class LoginService {
 
             // Check if the username and password match
             for (User user : users) {
-                if (user.getUsername().equals(username)) {
+                if (user.getUsername().equals(username) && user.getAdmin()) {
                     return true;
                 }
             }

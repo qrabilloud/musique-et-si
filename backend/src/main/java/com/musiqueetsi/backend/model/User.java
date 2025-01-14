@@ -5,10 +5,12 @@ import java.util.List;
 public class User {
     private String username;
     private String password;
-    private Boolean isAdmin=false;
+    private Boolean isAdmin = false;
     private List<String> favoriteMusicIds;
+
     // Constructors
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -37,9 +39,11 @@ public class User {
     public Boolean getAdmin() {
         return isAdmin;
     }
+
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
+
     public List<String> getFavoriteMusicIds() {
         return favoriteMusicIds;
     }

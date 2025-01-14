@@ -90,4 +90,10 @@ public class ArtistApplication {
         this.nameExample = nameExample;
     }
 
+    @Override
+    public String toString() {
+        return "ArtistApplication [id=" + id + ", artists=" + artists + ", contact=" + contact + ", location="
+                + location + ", description=" + description + ", nameExample=" + nameExample + "]";
+    }
+
 }

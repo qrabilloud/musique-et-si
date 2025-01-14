@@ -15,7 +15,7 @@ import java.util.List;
 public class JsonFileUtil {
     private static final String FILE_PATH = "backend/src/main/resources/users.json";
 
-    private static final String ARTIST_APPLICATION_PATH = "backend/src/main/data/ArtistApplication.json";
+    private static final String ARTIST_APPLICATION_PATH = "backend/data/ArtistApplication.json";
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -50,6 +50,8 @@ public class JsonFileUtil {
 
     // Write a Artist applications in the JSON file
     public void writeArtistApplication(List<ArtistApplication> applications) throws IOException {
+        System.out.println("Dans writeArtistApplication");
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(ARTIST_APPLICATION_PATH), applications);
+        System.out.println("Fin de writeArtistApplication");
     }
 }
