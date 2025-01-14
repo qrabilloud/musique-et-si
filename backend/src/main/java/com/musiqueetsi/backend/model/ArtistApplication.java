@@ -2,8 +2,6 @@ package com.musiqueetsi.backend.model;
 
 import java.util.List;
 
-import org.springframework.stereotype.Indexed;
-
 public class ArtistApplication {
 
     private static int idCounter = 0;

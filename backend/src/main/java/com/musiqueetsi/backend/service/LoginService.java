@@ -55,4 +55,20 @@ public class LoginService {
             return "Error occurred during registration.";
         }
     }
+
+    public Boolean isAdmin(String username) {
+        try {
+            List<User> users = jsonFileUtil.readUsers();
+
+            // Check if the username and password match
+            for (User user : users) {
+                if (user.getUsername().equals(username)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

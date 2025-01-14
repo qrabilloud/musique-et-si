@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Comment {
 
-    public String author;
+    public User author;
 
     public String body;
 
@@ -14,23 +14,23 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String author, String body, List<Comment> comments) {
+    public Comment(User author, String body, List<Comment> comments) {
         this.author = author;
         this.body = body;
         this.comments = comments;
     }
 
-    public Comment(String author, String body) {
+    public Comment(User author, String body) {
         this.author = author;
         this.body = body;
         this.comments = new ArrayList<Comment>();
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
