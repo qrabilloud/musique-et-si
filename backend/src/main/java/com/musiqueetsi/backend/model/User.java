@@ -1,20 +1,23 @@
 package com.musiqueetsi.backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private String username;
     private String password;
-    private Boolean isAdmin=false;
+    private Boolean isAdmin;
     private List<String> favoriteMusicIds;
     // Constructors
-    public User() {}
-
+    public User() {
+    this.isAdmin = false;
+    this.favoriteMusicIds = new ArrayList<String>();
+    }
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.isAdmin = false;
-        this.favoriteMusicIds = null;
+        this.favoriteMusicIds = new ArrayList<String>();
     }
 
     // Getters and Setters

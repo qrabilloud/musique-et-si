@@ -2,7 +2,7 @@
   "username" : "john_doe",
   "password" : "securepassword123",
   "favoriteMusicIds" : [ "123", "456", "789" ],
-  "admin" : true
+  "admin" : false
 }, {
   "username" : "jane_smith",
   "password" : "mypassword",
@@ -11,16 +11,11 @@
 }, {
   "username" : "guest_user",
   "password" : "guestpassword",
-  "favoriteMusicIds" : null,
+  "favoriteMusicIds" : [ ],
   "admin" : false
 }, {
-  "username" : "newuser",
+  "username" : "newuk5er",
   "password" : "newpassword123",
-  "favoriteMusicIds" : null,
-  "admin" : false
-}, {
-  "username" : "newu5er",
-  "password" : "newpassword123",
-  "favoriteMusicIds" : null,
+  "favoriteMusicIds" : [ ],
   "admin" : false
 } ]
