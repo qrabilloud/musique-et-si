@@ -1,3 +1,3 @@
 function patate() {
-    alert("ALED")
+    document.getElementById("login-modal").style.display = "block";
 }
