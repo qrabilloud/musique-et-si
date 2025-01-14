@@ -1,0 +1,26 @@
+[ {
+  "username" : "john_doe",
+  "password" : "securepassword123",
+  "favoriteMusicIds" : [ "123", "456", "789" ],
+  "admin" : true
+}, {
+  "username" : "jane_smith",
+  "password" : "mypassword",
+  "favoriteMusicIds" : [ "321", "654" ],
+  "admin" : false
+}, {
+  "username" : "guest_user",
+  "password" : "guestpassword",
+  "favoriteMusicIds" : null,
+  "admin" : false
+}, {
+  "username" : "newuser",
+  "password" : "newpassword123",
+  "favoriteMusicIds" : null,
+  "admin" : false
+}, {
+  "username" : "newu5er",
+  "password" : "newpassword123",
+  "favoriteMusicIds" : null,
+  "admin" : false
+} ]
