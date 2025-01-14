@@ -1,0 +1,9 @@
+{
+    "id": 0,
+    "name": "name",
+    "auteur": "auteur",
+    "description": "description",
+    "startDiffusion": "14/01/2025",
+    "endDiffusion": "29/01/2025",
+    "pathToMusiqueFile": "agiles/"
+}
