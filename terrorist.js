@@ -1,0 +1,3 @@
+function patate() {
+    alert("ALED")
+}
