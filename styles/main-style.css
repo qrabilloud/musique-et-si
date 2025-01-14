@@ -1,0 +1,41 @@
+header {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#menu {
+    background-color: crimson;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#logo {
+    background-color: fuchsia;
+    width: 20%;
+    margin-left: 1%;
+    margin-right: 2%;
+}
+
+#pages {
+    background-color: forestgreen;
+    display: flex;
+    width: 50%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.page {
+    background-color: blue;
+    display: flex;
+    width: 18%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+#login {
+    background-color: honeydew;
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 1%;
+}
