@@ -14,6 +14,7 @@ public class LoginService {
     @Autowired
     private JsonFileUtil jsonFileUtil;
 
+    // Authenticate existing users
     public boolean authenticate(String username, String password) {
         try {
             List<User> users = jsonFileUtil.readUsers();
@@ -28,5 +29,30 @@ public class LoginService {
             e.printStackTrace();
         }
         return false; // Login failed
+    }
+
+    // Register a new user
+    public String register(User newUser) {
+        try {
+            List<User> users = jsonFileUtil.readUsers();
+
+            // Check if the username already exists
+            for (User user : users) {
+                if (user.getUsername().equals(newUser.getUsername())) {
+                    return "Username already exists.";
+                }
+            }
+
+            // Add the new user to the list
+            users.add(newUser);
+
+            // Write the updated list back to the JSON file
+            jsonFileUtil.writeUsers(users);
+
+            return "User registered successfully!";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error occurred during registration.";
+        }
     }
 }

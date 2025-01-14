@@ -25,4 +25,9 @@ public class LoginController {
             return "Invalid username or password.";
         }
     }
+
+    @PostMapping("/register")
+    public String register(@RequestBody User newUser) {
+        return loginService.register(newUser);
+    }
 }
