@@ -1,0 +1,27 @@
+[ {
+  "id" : 65,
+  "theme" : "Amour",
+  "startDate" : "2025-01-14",
+  "endDate" : "2025-01-14",
+  "comments" : [ {
+    "id" : 56,
+    "author" : {
+      "username" : "iydg",
+      "password" : null,
+      "favoriteMusicIds" : null,
+      "admin" : false
+    },
+    "date" : "2025-01-14 14:30:00",
+    "body" : "lhvglyglyg"
+  }, {
+    "id" : 1,
+    "author" : {
+      "username" : "john_doe",
+      "password" : "securepassword123",
+      "favoriteMusicIds" : [ "123", "456", "789" ],
+      "admin" : true
+    },
+    "date" : "2025-01-15 15:59:44",
+    "body" : "youpi!"
+  } ]
+} ]

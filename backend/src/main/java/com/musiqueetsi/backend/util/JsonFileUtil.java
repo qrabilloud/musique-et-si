@@ -3,8 +3,11 @@ package com.musiqueetsi.backend.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.musiqueetsi.backend.model.ArtistApplication;
 import com.musiqueetsi.backend.model.MusicProposition;
+import com.musiqueetsi.backend.model.ThemeForum;
 import com.musiqueetsi.backend.model.User;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +23,8 @@ public class JsonFileUtil {
     private static final String ARTIST_APPLICATION_PATH = "backend/src/main/resources/ArtistApplication.json";
 
     private static final String MUSIC_PROPOSITION_PATH = "backend/src/main/resources/MusicProposition.json";
+
+    private static final String THEME_FORUM_PATH = "backend/src/main/resources/ThemeForum.json";
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -87,5 +92,26 @@ public class JsonFileUtil {
         System.out.println("Dans writeArtistApplication");
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(MUSIC_PROPOSITION_PATH), propositions);
         System.out.println("Fin de writeArtistApplication");
+    }
+
+    // Read all theme forum from the JSON file
+    public List<ThemeForum> readThemeForum() throws IOException {
+        System.out.println("Int readThemeForum");
+        File file = new File(THEME_FORUM_PATH);
+
+        if (!file.exists()) {
+            return new ArrayList<>(); // Return an empty list if the file doesn't exist
+        }
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return mapper.readValue(file, new TypeReference<List<ThemeForum>>() {
+        });
+    }
+
+    // Write a list of forum about theme to the JSON file
+    public void writeThemeForum(List<ThemeForum> forums) throws IOException {
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File(THEME_FORUM_PATH), forums);
     }
 }

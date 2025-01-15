@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoginService {
@@ -70,5 +71,21 @@ public class LoginService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Optional<User> getUser(String username) {
+        try {
+            List<User> users = jsonFileUtil.readUsers();
+
+            // Check if the username and password match
+            for (User user : users) {
+                if (user.getUsername().equals(username)) {
+                    return Optional.of(user);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }
