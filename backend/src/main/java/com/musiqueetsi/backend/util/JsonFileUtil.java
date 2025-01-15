@@ -15,7 +15,7 @@ import java.util.List;
 public class JsonFileUtil {
     private static final String FILE_PATH = "backend/src/main/resources/users.json";
 
-    private static final String ARTIST_APPLICATION_PATH = "backend/data/ArtistApplication.json";
+    private static final String ARTIST_APPLICATION_PATH = "backend/src/main/resources/ArtistApplication.json";
 
     private final ObjectMapper mapper = new ObjectMapper();
 

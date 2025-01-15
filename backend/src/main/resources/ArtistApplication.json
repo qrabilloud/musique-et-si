@@ -1,0 +1,36 @@
+[ {
+  "id" : 2,
+  "artists" : [ "Artist 3", "Artist 4" ],
+  "contact" : "artist3_contact@example.com",
+  "location" : [ "Berlin", "Madrid" ],
+  "description" : "A description for the second application",
+  "nameExample" : "Example 2"
+}, {
+  "id" : null,
+  "artists" : [ "Artist 1", "Artist 2", "Artist 3" ],
+  "contact" : "contact@example.com",
+  "location" : [ "New York", "Los Angeles" ],
+  "description" : "Description about the application",
+  "nameExample" : "Example Name"
+}, {
+  "id" : null,
+  "artists" : [ "Artist 1", "Artist 2", "Artist 3" ],
+  "contact" : "contact@example.com",
+  "location" : [ "New York", "Los Angeles" ],
+  "description" : "Description about the application",
+  "nameExample" : "Example Name"
+}, {
+  "id" : 1,
+  "artists" : [ "Artist 1", "Artist 2", "Artist 3" ],
+  "contact" : "contact@example.com",
+  "location" : [ "New York", "Los Angeles" ],
+  "description" : "Description about the application",
+  "nameExample" : "Example Name"
+}, {
+  "id" : 2,
+  "artists" : [ "Artist 1", "Artist 2", "Artist 3" ],
+  "contact" : "contact@example.com",
+  "location" : [ "New York", "Los Angeles" ],
+  "description" : "Description about the application",
+  "nameExample" : "Example Name"
+} ]

@@ -43,22 +43,40 @@ public class ArtistApplicationController {
         System.out.println("Dans endpoint");
         System.out.println(application.toString());
         try {
-            artistApplicationService.addArtistApplication(application);
+            ArtistApplication trueApplication = new ArtistApplication(application);
+            artistApplicationService.addArtistApplication(trueApplication);
             return ResponseEntity.ok("Application have been send");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
         }
     }
 
+    public static class Id {
+
+        private Long id;
+
+        public Id() {
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+    }
+
     @PutMapping(value = "/{user}/artistApplication", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addArtistApplication(@PathVariable String user,
-            @RequestBody ArtistApplication application) {
+            @RequestBody Id idApplication) {
         if (!loginService.isAdmin(user)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("User don't have the right");
         } else {
             try {
-                Boolean b = artistApplicationService.deleteArtistApplication(application);
+                Boolean b = artistApplicationService.deleteArtistApplication(idApplication.getId());
                 if (b) {
                     return ResponseEntity.ok("Application have been deleted");
                 } else {
