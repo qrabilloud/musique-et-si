@@ -1,4 +1,4 @@
-package com.musiqueetsi.model;
+package com.musiqueetsi.backend.model;
 
 public class MusiqueProperties {
 	private int id;

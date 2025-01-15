@@ -1,4 +1,4 @@
-package com.musiqueetsi.backend;
+package com.musiqueetsi.backend.service;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,10 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -18,8 +22,9 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.musiqueetsi.model.MusiqueProperties;
+import com.musiqueetsi.backend.model.MusiqueProperties;
 
+@Service
 public class MusiqueLogique {
 	private static final String pathMusiqueProperties = "src/main/resources/musiques/properties/";
 	
@@ -104,6 +109,20 @@ public class MusiqueLogique {
 				filter(p -> p.getName().equals(name)).toList();
 	}
 	
+	public static byte[] getMusicFile(MusiqueProperties musicInformations) {
+		try {
+		// We get the file 
+		Path filePath = Paths.get("src/main/resources/musiques/" + musicInformations.getPathToMusiqueFile() + musicInformations.getId() + ".mp4");
+		
+		//We convert it into byte[]
+		byte[] musicBytes =  Files.readAllBytes(filePath);
+		return musicBytes;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new byte[0];
+		}
+	}
 	public static void main(String[] args) {
 		System.out.println("AAAA");
 		System.out.println(getPropertiesById(0));
@@ -113,6 +132,6 @@ public class MusiqueLogique {
 		System.out.println(getPropertiesById(1));
 		System.out.println(getMusiquePropertiesByName("name"));
 		System.out.println(getMusiquePropertiesByName("a"));
-		System.out.println(getAllPropertiesPlayable());
+		System.out.println(getAllPropertiesPlayables());
 	}
 }

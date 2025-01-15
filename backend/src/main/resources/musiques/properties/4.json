@@ -1,0 +1,9 @@
+{
+    "id": 4,
+    "name": "Let's Dance",
+    "auteur": "David Bowie",
+    "description": "...........",
+    "startDiffusion": "2025-01-16",
+    "pathToMusiqueFile": "agiles/",
+    "endDiffusion": "2025-01-17"
+}
