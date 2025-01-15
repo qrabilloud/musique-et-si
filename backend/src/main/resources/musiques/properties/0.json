@@ -3,7 +3,7 @@
     "name": "name",
     "auteur": "auteur",
     "description": "description",
-    "startDiffusion": "14/01/2025",
-    "endDiffusion": "29/01/2025",
+    "startDiffusion": "2025-01-14",
+    "endDiffusion": "2025-01-29",
     "pathToMusiqueFile": "agiles/"
 }
