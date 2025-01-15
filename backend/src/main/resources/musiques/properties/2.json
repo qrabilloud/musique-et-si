@@ -1,9 +1,9 @@
 {
-  "id" : 2,
-  "name" : "name",
-  "auteur" : "auteur",
-  "description" : "description",
-  "startDiffusion" : "2025-01-14",
-  "pathToMusiqueFile" : "agiles/",
-  "endDiffusion" : "2025-01-29"
+  "id": 2,
+  "name": "Libre de Droits",
+  "auteur": "Gilles Stella (Crossed)",
+  "description": "Musique open source from the french channel crossed singed by Gilles Stella",
+  "startDiffusion": "2025-01-14",
+  "pathToMusiqueFile": "agiles/",
+  "endDiffusion": "2025-01-29"
 }
