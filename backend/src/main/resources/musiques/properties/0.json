@@ -1,9 +1,9 @@
 {
-  "id" : 0,
-  "name" : "name",
-  "auteur" : "auteur",
-  "description" : "description",
-  "startDiffusion" : "15/01/2025",
-  "pathToMusiqueFile" : "agiles/",
-  "endDiffusion" : "30/01/2025"
+    "id": 0,
+    "name": "Perfect Collection Ys - Endless History (Vocal Version)",
+    "auteur": "Falcom Music Channel",
+    "description": "Music from the game Ys",
+    "startDiffusion": "2025-01-14",
+    "endDiffusion": "2025-01-29",
+    "pathToMusiqueFile": "agiles/"
 }

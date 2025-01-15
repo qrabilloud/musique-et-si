@@ -1,4 +1,4 @@
-package com.musiqueetsi.backend;
+package com.musiqueetsi.backend.service;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +14,8 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,13 +25,14 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.musiqueetsi.model.MusiqueProperties;
+import com.musiqueetsi.backend.model.MusiqueProperties;
 
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.FFmpegExecutor;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 
+@Service
 public class MusiqueLogique {
 	private static final String pathRessources = "src/main/resources/";
 	private static final String pathMusique = pathRessources + "musiques/";
@@ -119,6 +122,20 @@ public class MusiqueLogique {
 				filter(p -> p.getName().equals(name)).toList();
 	}
 	
+	public static byte[] getMusicFile(MusiqueProperties musicInformations) {
+		try {
+		// We get the file 
+		Path filePath = Paths.get(pathMusique + musicInformations.getPathToMusiqueFile() + musicInformations.getId() + ".mp4");
+		
+		//We convert it into byte[]
+		byte[] musicBytes =  Files.readAllBytes(filePath);
+		return musicBytes;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new byte[0];
+		}
+	}
 	private static int generateId() {
 		List<MusiqueProperties> allProperties = getAllProperties();
 		if (allProperties.size() == 0) return 0;

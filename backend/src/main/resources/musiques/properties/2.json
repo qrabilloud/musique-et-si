@@ -1,9 +1,10 @@
 {
-  "id" : 2,
-  "name" : "name",
-  "auteur" : "auteur",
-  "description" : "description",
-  "startDiffusion" : "15/01/2025",
-  "pathToMusiqueFile" : "agiles/",
-  "endDiffusion" : "30/01/2025"
+  "id": 2,
+  "name": "Libre de Droits",
+  "auteur": "Gilles Stella (Crossed)",
+  "description": """Une musique lourde de sens interprété par un Gilles Stella flamboyant ! 
+Je crois que cette musique est libre de droits mais je ne suis pas sur, 
+veuillez me confirmer ça par commentaire svp.""","startDiffusion": "2025-01-14",
+  "pathToMusiqueFile": "agiles/",
+  "endDiffusion": "2025-01-29"
 }

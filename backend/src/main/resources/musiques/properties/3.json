@@ -1,9 +1,9 @@
 {
-  "id" : 3,
-  "name" : "name",
-  "auteur" : "auteur",
-  "description" : "description",
-  "startDiffusion" : "2025-01-16",
-  "pathToMusiqueFile" : "agiles/",
-  "endDiffusion" : "2025-01-29"
+  "id": 3,
+  "name": "Attention Dino Danger (version originale)",
+  "auteur": "Gilles Stella",
+  "description": "Music of Gilles Stalla made for the Chroma Carnausor.",
+  "startDiffusion": "2025-01-15",
+  "pathToMusiqueFile": "agiles/",
+  "endDiffusion": "2025-01-29"
 }

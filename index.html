@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title>MusiqueEtSi</title>
+    <script type="text/javascript" src="terrorist.js"></script>
+    <link href="styles/main-style.css" rel="stylesheet" type="text/css" /> 
+</head>
+<body>
+    <div id="register-modal">
+        <div class="text-register-login">
+            S'inscrire
+        </div>
+        <div class="text-register-login">
+            Se connecter
+        </div>
+        <div class="switch-register-login">
+            <div class="text-switch-register-login">
+                Déja membre ?
+            </div>
+            <div class="text-switch-register-login">
+                Pas encore inscrit ?
+            </div>
+            <div class="link-switch-register-login">
+                Se connecter
+            </div>
+            <div class="link-switch-register-login">
+                S'inscrire
+            </div>
+        </div>
+        <form class="register" action="/action_page.php" method="post">
+            <div class="container">
+              <label for="uname"><b>Nom d'utilisateur</b></label>
+              <input type="text" placeholder="Entrez votre nom d'utilisateur" name="uname" required>
+        
+              <label for="psw"><b>Mot de passe</b></label>
+              <input type="password" placeholder="Entrez votre mot de passe" name="psw" required>
+                
+              <button type="submit">S'inscrire</button>
+            </div>
+        
+            <div class="container">
+              <button type="button" onclick="hideRegister()" class="cancelbtn">Annuler</button>
+            </div>
+          </form>
+    </div>
+    <div class="vertical-margin"></div>
+    <header>
+        <div id="menu">
+            <div id="logo">
+                <strong>Musique et Si</strong>
+            </div>
+            <div id="pages">
+                <div class="page">
+                    <strong>Accueil</strong>
+                </div>
+                <div class="page">
+                    <strong>Actualités</strong>
+                </div>
+                <div class="page">
+                    <strong>Ephemerides</strong>
+                </div>
+                <div class="page">
+                    <strong>Forum</strong>
+                </div>
+                <div class="page">
+                    <strong>Propositions</strong>
+                </div>
+            </div>
+            <div id="login" >
+                <input type="button" id="login-button" value="Se connecter" onclick="displayRegister()">
+            </input>
+            </div>
+        </div>
+    </header>
+    <div class="vertical-margin"></div>
+    <div id="content">
+        Ta mère,
+        la course a jamais commencé.
+    </div>
+    <div class="vertical-margin"></div>
+    <footer>
+        Musique et Si
+    </footer>
+    <div class="vertical-margin"></div>
+</body>
+</html>
