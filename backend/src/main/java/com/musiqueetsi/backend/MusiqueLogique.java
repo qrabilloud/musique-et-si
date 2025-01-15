@@ -25,10 +25,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.musiqueetsi.model.MusiqueProperties;
 
+import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.FFmpegExecutor;
+import net.bramp.ffmpeg.FFprobe;
+import net.bramp.ffmpeg.builder.FFmpegBuilder;
+
 public class MusiqueLogique {
-	private static final String pathMusique = "src/main/resources/musiques/";
+	private static final String pathRessources = "src/main/resources/";
+	private static final String pathMusique = pathRessources + "musiques/";
 	private static final String pathMusiqueProperties = pathMusique + "properties/";
 	private static final String[] endPathMusiqueFile = new String[] {"agiles/", "ephemeres/*/"};
+	
 	
 	private static ObjectMapper mapper = new ObjectMapper();
 	
@@ -136,17 +143,40 @@ public class MusiqueLogique {
 	}
 	
 	public static String writeMusique(MultipartFile file, MusiqueProperties properties) {
+		
 		int id = generateId();
+		properties.setId(id);
 		if (!verifyMusiquePath(properties.getPathToMusiqueFile())) return "Failed to upload the file : the PathToMusiqueFile " + properties.getPathToMusiqueFile() + " is not allowed.";
-		Path destinationFile = Paths.get(pathMusique + properties.getPathToMusiqueFile() + id + ".mp4");
+		Path destinationFile = Paths.get(pathMusique + properties.getPathToMusiqueFile() + id);
 		try (InputStream inputStream = file.getInputStream()) {
 			Files.copy(inputStream, destinationFile,
 				StandardCopyOption.REPLACE_EXISTING);
+			try {
+				System.out.println(destinationFile.toString());
+				FFmpeg ffmpeg = new FFmpeg(pathRessources + "ffmpeg.exe");
+				FFprobe ffprobe = new FFprobe(pathRessources + "ffprobe.exe");
+				FFmpegBuilder builder = new FFmpegBuilder()
+						.setInput(destinationFile.toString())
+						.overrideOutputFiles(true)
+						.addOutput(destinationFile.toString() + ".mp4")
+						.setFormat("mp4")
+						.setAudioCodec("aac")
+						.setAudioBitRate(4*32768)
+						.disableVideo()
+						.done();
+				FFmpegExecutor executor = new FFmpegExecutor(ffmpeg, ffprobe);
+				executor.createJob(builder).run();
+				destinationFile.toFile().delete();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return "Error when trying to convert the file";
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "Error while writing the file.";
 		}
-		return "You successfully uploaded " + file.getOriginalFilename() + " (id : " + id + " !";
+		writeProperties(properties);
+		return "You successfully uploaded " + file.getOriginalFilename() + " (id : " + id + ") !";
 	}
 	
 	public static void main(String[] args) {
@@ -159,5 +189,7 @@ public class MusiqueLogique {
 		System.out.println(getMusiquePropertiesByName("name"));
 		System.out.println(getMusiquePropertiesByName("a"));
 		System.out.println(getAllPropertiesPlayables());
+		System.out.println(getAllProperties());
+		System.out.println(generateId());
 	}
 }
