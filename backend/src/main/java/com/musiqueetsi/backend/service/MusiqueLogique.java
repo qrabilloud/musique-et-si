@@ -52,7 +52,7 @@ public class MusiqueLogique {
 		File[] directoryListing = dir.listFiles();
 		for (File file : directoryListing) {
 			MusiqueProperties prop = readFileProperties(file.getName());
-			properties.add(prop);
+			if (prop != null) properties.add(prop);
 		}
 		return properties;
 	}
