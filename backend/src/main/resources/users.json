@@ -1,0 +1,31 @@
+[ {
+  "username" : "john_doe",
+  "password" : "securepassword123",
+  "favoriteMusicIds" : [ "123", "456", "789" ],
+  "admin" : false
+}, {
+  "username" : "jane_smith",
+  "password" : "mypassword",
+  "favoriteMusicIds" : [ "321", "654" ],
+  "admin" : false
+}, {
+  "username" : "guest_user",
+  "password" : "guestpassword",
+  "favoriteMusicIds" : [ ],
+  "admin" : false
+}, {
+  "username" : "newuk5er",
+  "password" : "newpassword123",
+  "favoriteMusicIds" : [ ],
+  "admin" : false
+}, {
+  "username" : "ojdz",
+  "password" : "lnvdlvn",
+  "favoriteMusicIds" : [ ],
+  "admin" : false
+}, {
+  "username" : "jae_smh",
+  "password" : "$2a$10$jzKLWEBzNxhTDYWdDPVOTepf8MkQkqfXN9Egj64l4i4M0xFjHCify",
+  "favoriteMusicIds" : [ ],
+  "admin" : false
+} ]
