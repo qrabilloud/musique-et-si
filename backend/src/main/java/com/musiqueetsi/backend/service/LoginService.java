@@ -3,6 +3,7 @@ package com.musiqueetsi.backend.service;
 import com.musiqueetsi.backend.model.User;
 import com.musiqueetsi.backend.util.JsonFileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -10,7 +11,8 @@ import java.util.List;
 
 @Service
 public class LoginService {
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private JsonFileUtil jsonFileUtil;
 
@@ -21,8 +23,8 @@ public class LoginService {
 
             // Check if the username and password match
             for (User user : users) {
-                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                    return true;
+                if (user.getUsername().equals(username)) {
+                    return passwordEncoder.matches(password, user.getPassword());
                 }
             }
         } catch (IOException e) {
@@ -35,7 +37,7 @@ public class LoginService {
     public String register(User newUser) {
         try {
             List<User> users = jsonFileUtil.readUsers();
-
+            newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             // Check if the username already exists
             for (User user : users) {
                 if (user.getUsername().equals(newUser.getUsername())) {

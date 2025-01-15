@@ -3,12 +3,10 @@ package com.musiqueetsi.backend.controller;
 import com.musiqueetsi.backend.model.User;
 import com.musiqueetsi.backend.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+
 @RequestMapping("/api")
 public class LoginController {
 
