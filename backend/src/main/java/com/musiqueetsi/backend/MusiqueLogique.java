@@ -6,10 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -21,7 +26,9 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.musiqueetsi.model.MusiqueProperties;
 
 public class MusiqueLogique {
-	private static final String pathMusiqueProperties = "src/main/resources/musiques/properties/";
+	private static final String pathMusique = "src/main/resources/musiques/";
+	private static final String pathMusiqueProperties = pathMusique + "properties/";
+	private static final String[] endPathMusiqueFile = new String[] {"agiles/", "ephemeres/*/"};
 	
 	private static ObjectMapper mapper = new ObjectMapper();
 	
@@ -82,6 +89,7 @@ public class MusiqueLogique {
 	}
 	
 	public static boolean writeProperties(MusiqueProperties properties) {
+		if (!verifyMusiquePath(properties.getPathToMusiqueFile())) return false;
 		ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 		try {
 			writer.writeValue(new File(pathMusiqueProperties + properties.getId() + ".json"), properties);
@@ -104,6 +112,43 @@ public class MusiqueLogique {
 				filter(p -> p.getName().equals(name)).toList();
 	}
 	
+	private static int generateId() {
+		List<MusiqueProperties> allProperties = getAllProperties();
+		if (allProperties.size() == 0) return 0;
+		return 1 + allProperties.stream().max((final MusiqueProperties p1, final MusiqueProperties p2) -> p1.getId() - p2.getId()).get().getId();
+	}
+	
+	public static boolean verifyMusiquePath(String musiquePath) {
+		for (String possibleMP : endPathMusiqueFile) {
+			if (possibleMP.equals(musiquePath))
+				return true;
+			String[] possibleMPSplit = possibleMP.split("/");
+			String[] musiquePathSplit = musiquePath.split("/");
+			if (possibleMPSplit.length == musiquePathSplit.length) {
+				boolean possible = true;
+				for (int i = 0; i < musiquePathSplit.length; i ++)
+					if (!(possibleMPSplit[i].equals("*") || possibleMPSplit[i].equals(musiquePathSplit[i])))
+						possible = false;
+				if (possible) return true;
+			}
+		}
+		return false;
+	}
+	
+	public static String writeMusique(MultipartFile file, MusiqueProperties properties) {
+		int id = generateId();
+		if (!verifyMusiquePath(properties.getPathToMusiqueFile())) return "Failed to upload the file : the PathToMusiqueFile " + properties.getPathToMusiqueFile() + " is not allowed.";
+		Path destinationFile = Paths.get(pathMusique + properties.getPathToMusiqueFile() + id + ".mp4");
+		try (InputStream inputStream = file.getInputStream()) {
+			Files.copy(inputStream, destinationFile,
+				StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "Error while writing the file.";
+		}
+		return "You successfully uploaded " + file.getOriginalFilename() + " (id : " + id + " !";
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("AAAA");
 		System.out.println(getPropertiesById(0));
@@ -113,6 +158,6 @@ public class MusiqueLogique {
 		System.out.println(getPropertiesById(1));
 		System.out.println(getMusiquePropertiesByName("name"));
 		System.out.println(getMusiquePropertiesByName("a"));
-		System.out.println(getAllPropertiesPlayable());
+		System.out.println(getAllPropertiesPlayables());
 	}
 }
