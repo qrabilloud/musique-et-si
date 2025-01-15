@@ -1,0 +1,15 @@
+[ {
+  "id" : 1,
+  "theme" : "Nature",
+  "title" : "Example Prop 1",
+  "artists" : [ "A", "B" ],
+  "location" : "Here !",
+  "openSource" : true
+}, {
+  "id" : 1,
+  "theme" : "Nature",
+  "title" : "Example Prop 1",
+  "artists" : [ "A", "B" ],
+  "location" : "Here !",
+  "openSource" : true
+} ]
