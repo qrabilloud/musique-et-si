@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,36 @@ public class MusiqueLogique {
 		return readFileProperties(id + ".json");
 	}
 	
-	public static MusiqueProperties readFileProperties(String path) {
+	public static List<MusiqueProperties> getAllProperties(){
+		List<MusiqueProperties> properties = new ArrayList<MusiqueProperties>();
+		File dir = new File(pathMusiqueProperties);
+		File[] directoryListing = dir.listFiles();
+		for (File file : directoryListing) {
+			MusiqueProperties prop = readFileProperties(file.getName());
+			properties.add(prop);
+		}
+		return properties;
+	}
+	
+	public static List<MusiqueProperties> getAllPropertiesPlayables(){
+		String todayString = getTodayString();
+		return getAllProperties().stream().
+				filter(p -> p.getStartDiffusion().compareTo(todayString) <= 0 
+							&& p.getEndDiffusion().compareTo(todayString) >= 0).toList();
+	}
+	
+	private static String getTodayString() {
+		ZoneId z = ZoneId.of( "Europe/Paris" );
+		LocalDate today = LocalDate.now( z );
+		String year = "" + today.getYear();
+		String month = "" + today.getMonthValue();
+		if (month.length() == 1) month = "0" + month;
+		String day = "" + today.getDayOfMonth();
+		if (day.length() == 1) day = "0" + day;
+		return year + "-" + month + "-" + day;
+	}
+	
+	private static MusiqueProperties readFileProperties(String path) {
 		InputStream file;
 		try {
 			file = new FileInputStream(pathMusiqueProperties + path);
@@ -69,15 +100,8 @@ public class MusiqueLogique {
 	}
 	
 	public static List<MusiqueProperties> getMusiquePropertiesByName(String name){
-		List<MusiqueProperties> properties = new ArrayList<MusiqueProperties>();
-		File dir = new File(pathMusiqueProperties);
-		File[] directoryListing = dir.listFiles();
-		for (File file : directoryListing) {
-			System.out.println(file.getPath());
-			MusiqueProperties prop = readFileProperties(file.getName());
-			if (prop.getName().equals(name)) properties.add(prop);
-		}
-		return properties;
+		return getAllProperties().stream().
+				filter(p -> p.getName().equals(name)).toList();
 	}
 	
 	public static void main(String[] args) {
@@ -89,5 +113,6 @@ public class MusiqueLogique {
 		System.out.println(getPropertiesById(1));
 		System.out.println(getMusiquePropertiesByName("name"));
 		System.out.println(getMusiquePropertiesByName("a"));
+		System.out.println(getAllPropertiesPlayable());
 	}
 }
