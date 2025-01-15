@@ -7,9 +7,44 @@
     <link href="styles/main-style.css" rel="stylesheet" type="text/css" /> 
 </head>
 <body>
-    <div id="login-modal">
-        <strong> ALED </strong>
+    <div id="register-modal">
+        <div class="text-register-login">
+            S'inscrire
+        </div>
+        <div class="text-register-login">
+            Se connecter
+        </div>
+        <div class="switch-register-login">
+            <div class="text-switch-register-login">
+                Déja membre ?
+            </div>
+            <div class="text-switch-register-login">
+                Pas encore inscrit ?
+            </div>
+            <div class="link-switch-register-login">
+                Se connecter
+            </div>
+            <div class="link-switch-register-login">
+                S'inscrire
+            </div>
+        </div>
+        <form class="register" action="/action_page.php" method="post">
+            <div class="container">
+              <label for="uname"><b>Nom d'utilisateur</b></label>
+              <input type="text" placeholder="Entrez votre nom d'utilisateur" name="uname" required>
+        
+              <label for="psw"><b>Mot de passe</b></label>
+              <input type="password" placeholder="Entrez votre mot de passe" name="psw" required>
+                
+              <button type="submit">S'inscrire</button>
+            </div>
+        
+            <div class="container">
+              <button type="button" onclick="hideRegister()" class="cancelbtn">Annuler</button>
+            </div>
+          </form>
     </div>
+    <div class="vertical-margin"></div>
     <header>
         <div id="menu">
             <div id="logo">
@@ -33,17 +68,20 @@
                 </div>
             </div>
             <div id="login" >
-                <input type="button" id="login-button" value="Se connecter" onclick="patate()">
+                <input type="button" id="login-button" value="Se connecter" onclick="displayRegister()">
             </input>
             </div>
         </div>
     </header>
+    <div class="vertical-margin"></div>
     <div id="content">
-        <p>Ta mère,</p>
-        <p>la course a jamais commencé.</p>
+        Ta mère,
+        la course a jamais commencé.
     </div>
+    <div class="vertical-margin"></div>
     <footer>
         Musique et Si
     </footer>
+    <div class="vertical-margin"></div>
 </body>
 </html>
