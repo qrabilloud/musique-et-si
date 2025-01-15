@@ -8,41 +8,36 @@
 </head>
 <body>
     <div id="register-modal">
-        <div class="text-register-login">
-            S'inscrire
+        <div id="register-modal-content">
+            <div id="upper-register">
+                <div id="text-register">
+                    S'inscrire
+                </div>
+                <div id="switch-to-login">
+                    <div id="text-switch-to-login">
+                        Déja membre ?
+                    </div>
+                    <div class="horizontal-space"></div> 
+                    <div id="link-switch-to-login">
+                        Se connecter
+                    </div>
+                </div>
+            </div>
+            <form action="/action_page.php" method="post">
+                <div class="container">
+                    <label for="uname"><b>Nom d'utilisateur</b></label>
+                    <input type="text" placeholder="Entrez votre nom d'utilisateur" name="uname" required>
+
+                    <label for="psw"><b>Mot de passe</b></label>
+                    <input type="password" placeholder="Entrez votre mot de passe" name="psw" required>
+                    
+                    <button type="submit">S'inscrire</button>
+                </div>
+                <div class="container">
+                    <button type="button" onclick="hideRegister()" class="cancelbtn">Annuler</button>
+                </div>
+            </form>
         </div>
-        <div class="text-register-login">
-            Se connecter
-        </div>
-        <div class="switch-register-login">
-            <div class="text-switch-register-login">
-                Déja membre ?
-            </div>
-            <div class="text-switch-register-login">
-                Pas encore inscrit ?
-            </div>
-            <div class="link-switch-register-login">
-                Se connecter
-            </div>
-            <div class="link-switch-register-login">
-                S'inscrire
-            </div>
-        </div>
-        <form class="register" action="/action_page.php" method="post">
-            <div class="container">
-              <label for="uname"><b>Nom d'utilisateur</b></label>
-              <input type="text" placeholder="Entrez votre nom d'utilisateur" name="uname" required>
-        
-              <label for="psw"><b>Mot de passe</b></label>
-              <input type="password" placeholder="Entrez votre mot de passe" name="psw" required>
-                
-              <button type="submit">S'inscrire</button>
-            </div>
-        
-            <div class="container">
-              <button type="button" onclick="hideRegister()" class="cancelbtn">Annuler</button>
-            </div>
-          </form>
     </div>
     <div class="vertical-margin"></div>
     <header>
@@ -67,7 +62,7 @@
                     <strong>Propositions</strong>
                 </div>
             </div>
-            <div id="login" >
+            <div id="connection" >
                 <input type="button" id="login-button" value="Se connecter" onclick="displayRegister()">
             </input>
             </div>

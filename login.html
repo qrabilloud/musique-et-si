@@ -1,0 +1,29 @@
+<div id="login-modal">
+    <div id="login-modal-content">
+        <div id="text-login">
+            Se connecter
+        </div>
+        <div id="switch-to-register">
+            <div id="text-switch-to-register">
+                Pas encore inscrit ?
+            </div>
+            <div id="link-switch-to-register">
+                S'inscrire
+            </div>
+        </div>
+        <form class="login" action="/action_page.php" method="post">
+            <div class="container">
+                <label for="uname"><b>Nom d'utilisateur</b></label>
+                <input type="text" placeholder="Entrez votre nom d'utilisateur" name="uname" required>
+        
+                <label for="psw"><b>Mot de passe</b></label>
+                <input type="password" placeholder="Entrez votre mot de passe" name="psw" required>
+
+                <button type="submit">Se connecter</button>
+            </div>
+            <div class="container">
+                <button type="button" onclick="hideRegister()" class="cancelbtn">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div> 

@@ -1,5 +1,5 @@
 function displayRegister() {
-    document.getElementById("register-modal").style.display = "flex";
+    document.getElementById("register-modal").style.display = "block";
 }
 
 function hideRegister() {
